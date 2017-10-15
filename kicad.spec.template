@@ -37,7 +37,8 @@ Source2:        %{name}-libraries-%{version}.tar.gz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  compat-wxGTK3-gtk2-devel
-BuildRequires:  wxPython-devel
+#BuildRequires:  wxPython-devel
+BuildRequires:  compat-wxPython3-gtk2
 BuildRequires:  python-devel
 BuildRequires:  swig
 BuildRequires:  boost-devel
