@@ -144,6 +144,9 @@ else
    SKIP_BOOST="-DKICAD_SKIP_BOOST=ON"
 fi
 
+#DEBUG
+find /usr/lib* -name wxversion.py
+
 %cmake -DKICAD_STABLE_VERSION=OFF $SKIP_BOOST \
 				  -DKICAD_SCRIPTING=ON \
 				  -DKICAD_SCRIPTING_MODULES=ON \
