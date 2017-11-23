@@ -148,12 +148,19 @@ fi
 #DEBUG
 find /usr/lib* -name wxversion.py
 
+# compat-wxGTK3-gtk2-devel is now merged with wxGTK3-devel and uses a single wx-config
+%if 0%{?fedora} > 27
+%global wx_config wx-config
+%else
+%global wx_config wx-config-3.0-gtk2
+%endif
+
 %cmake -DKICAD_STABLE_VERSION=OFF $SKIP_BOOST \
 				  -DKICAD_SCRIPTING=OFF \
 				  -DKICAD_SCRIPTING_MODULES=OFF \
 				  -DKICAD_SCRIPTING_WXPYTHON=OFF \
                   -DCMAKE_BUILD_TYPE=Debug \
-                  -DwxWidgets_CONFIG_EXECUTABLE=%{_bindir}/wx-config-3.0-gtk2
+                  -DwxWidgets_CONFIG_EXECUTABLE=%{_bindir}/%{wx_config}
 # workaround to get WXPYTHON_VERSION set in config.h
 make rebuild_cache
 # end workaround
